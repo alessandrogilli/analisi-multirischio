@@ -49,29 +49,6 @@ class Tree:
             filename = self.url.replace("CSV/", "")[:-4] + "_depth" + str(self.depth) + ".png"
             self.saving("img",filename)
 
-    def saving(self, t, name, output=""):
-        if t == "img":
-            path = "img_tree"
-            try:
-                os.mkdir(path)
-            except FileExistsError:
-                if (self.verbose >= 1):
-                    print("%s exists yet" % path)
-            plt.savefig(path + "/" + name)
-        elif t == "txt":
-            path = "txt_tree"
-            try:
-                os.mkdir(path)
-            except FileExistsError:
-                if (self.verbose >= 1):
-                    print("%s exists yet" % path)
-
-            if self.depth is None:
-                self.depth = "Auto"
-            file = open(path + "/" + name, 'w')
-            print(output, file=file)
-            file.close()
-
     def description(self, save=False):
         n_nodes = self.clf.tree_.node_count
         children_left = self.clf.tree_.children_left
@@ -131,6 +108,17 @@ class Tree:
             filename = self.url.replace("CSV/", "")[:-4] + "_depth" + str(self.depth) + "_tree.txt"
             self.saving(t="txt", name=filename, output=self.r)
 
+    def rules(self, save=False):
+        rules = self.get_rules()
+        output=""
+        for r in rules:
+            output += r + "\n" #print(r)
+        print(output)
+
+        if save:
+            filename = self.url.replace("CSV/", "")[:-4] + "_depth" + str(self.depth) + "_rules.txt"
+            self.saving(t="txt",name=filename,output=output)
+
     def get_rules(self):
         from sklearn.tree import _tree
         feature_names = self.features
@@ -185,16 +173,28 @@ class Tree:
 
         return rules
 
-    def rules(self, save=False):
-        rules = self.get_rules()
-        output=""
-        for r in rules:
-            output += r + "\n" #print(r)
-        print(output)
+    def saving(self, t, name, output=""):
+        if t == "img":
+            path = "img_tree"
+            try:
+                os.mkdir(path)
+            except FileExistsError:
+                if (self.verbose >= 1):
+                    print("%s exists yet" % path)
+            plt.savefig(path + "/" + name)
+        elif t == "txt":
+            path = "txt_tree"
+            try:
+                os.mkdir(path)
+            except FileExistsError:
+                if (self.verbose >= 1):
+                    print("%s exists yet" % path)
 
-        if save:
-            filename = self.url.replace("CSV/", "")[:-4] + "_depth" + str(self.depth) + "_rules.txt"
-            self.saving(t="txt",name=filename,output=output)
+            if self.depth is None:
+                self.depth = "Auto"
+            file = open(path + "/" + name, 'w')
+            print(output, file=file)
+            file.close()
 
     def show(self):
         plt.show()

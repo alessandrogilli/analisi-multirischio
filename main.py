@@ -8,7 +8,7 @@ n_cluster=0         #Default = 0, con 0 prende in automatico il numero di cluste
 names=False         #Default = False
 plot_save=True     #Default = False
 
-depth=4             #Default = None
+depth=3             #Default = None
 tree_save=True      #Default = False
 desc_save=True      #Default = False
 text_save=True      #Default = False
