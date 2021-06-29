@@ -1,4 +1,4 @@
-# analisi_multirischio
+# analisi-multirischio
 Progetto python per visualizzare classi di rischio sismico e idrogeologico da dataset Istat opportunamente modificati. La guida si suddivide in step: dalla creazione dei
 file .csv creati con Weka (o con un altro qualsiasi strumento per il clustering) alla visualizzazione dei risultati.
 
