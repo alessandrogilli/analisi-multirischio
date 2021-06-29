@@ -5,10 +5,12 @@ print("PCA And Tree.\nAlessandro Gilli, Luana Mantovan - 2021")
 
 n_cluster=0         #Default = 0, con 0 prende in automatico il numero di cluster dal nome
 
-names=False         #Default = False
-plot_save=True     #Default = False
+names=True          #Default = False
+names3=False        #Default = False
+plot_save=True      #Default = False
+plot_save3=True     #Default = False
 
-depth=3             #Default = None
+depth=5             #Default = None
 tree_save=True      #Default = False
 desc_save=True      #Default = False
 text_save=True      #Default = False
@@ -43,7 +45,7 @@ while cmd != "e":
         p.pca.plot(names=names,save=plot_save)
         p.pca.show()
     elif cmd == "2":
-        p.pca.plot3(names=names,save=plot_save)
+        p.pca.plot3(names=names3,save=plot_save3)
         p.pca.show()
     elif cmd == "3":
         p.tree.plot(save=tree_save)
