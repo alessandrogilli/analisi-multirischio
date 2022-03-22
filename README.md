@@ -77,3 +77,7 @@ Per eseguire il programma, assicurarsi di avere attivato l'ambiente virtuale e d
 python main.py
 ```
 Il programma visualizzerà come primo menu la lista dei file .csv contenuti all'interno della cartella CSV e successivamente il menu con le varie opzioni per visualizzare i risultati.
+
+## Autori
+- [Alessandro Gilli](mailto:alessandro.gilli@edu.unife.it)
+- [Luana Mantovan](mailto:luana.mantovan@edu.unife.it)
